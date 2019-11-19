@@ -1,7 +1,7 @@
 <?php
 
-require "../vendor/autoload.php";
-require "config.php";
+require '../vendor/autoload.php';
+require 'config.php';
 
 use PremiumFastNetwork\WSGateway;
 
