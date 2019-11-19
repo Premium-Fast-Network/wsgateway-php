@@ -12,3 +12,6 @@ $deviceid = '';
  * International : 65xxxxxx
  */
 $number = '';
+$multiplenumber = array(
+    '08xxxx', '08xxxxx'
+);
