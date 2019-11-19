@@ -64,10 +64,10 @@ class WSGateway
     }
 
     /**
-     * Set Header of Guzzle
-     * 
+     * Set Header of Guzzle.
+     *
      * @param array $form
-     * 
+     *
      * @return array $params
      */
     private function setheader($form)
@@ -77,18 +77,18 @@ class WSGateway
                 'Accept'        => 'application/json',
                 'Authorization' => 'Bearer '.$this->token,
             ],
-            'form_params' => $form
+            'form_params' => $form,
         ];
 
         return $params;
     }
 
     /**
-     * Send Message in Single Number or Multiple Number
-     * 
+     * Send Message in Single Number or Multiple Number.
+     *
      * Set $number to array for bulk message
      * Set $number to string for single message
-     * 
+     *
      * @return json $response
      */
     public function sendmessage($number, $message)
@@ -96,16 +96,16 @@ class WSGateway
         $params = $this->setheader([
             'deviceid'  => $this->deviceid,
             'number'    => $number,
-            'message'   => $message
+            'message'   => $message,
         ]);
-        
+
         $actionurl = 'message/send';
 
-        /**
+        /*
          * If number variable is array
          * Send message by sendbulk endpoint
          */
-        if(is_array($number)) {
+        if (is_array($number)) {
             $actionurl = 'message/sendbulk';
         }
 
@@ -117,18 +117,18 @@ class WSGateway
     }
 
     /**
-     * Send message to contact group
-     * 
+     * Send message to contact group.
+     *
      * @param string $groupid|$message
      */
     public function sendgroup($groupid, $message)
     {
         $params = $this->setheader([
             'deviceid'  => $this->deviceid,
-            'message'   => $message
+            'message'   => $message,
         ]);
 
-        $request = $this->guzzle->post('message/sendgroup/'. $groupid, $params);
+        $request = $this->guzzle->post('message/sendgroup/'.$groupid, $params);
 
         $response = $request->getBody();
 
