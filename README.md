@@ -40,3 +40,60 @@ class stdClass#29 (2) {
   string(44) "success, message will be send in background."
 }
 ```
+
+## Send Bulk Message Example
+
+- Request
+```php
+<?php
+
+require "vendor/autoload.php";
+
+use PremiumFastNetwork\WSGateway;
+
+$wa = new WSGateway();
+$wa->token('YOUR-TOKEN-HERE');
+$wa->deviceid('YOUR-DEVICE-ID');
+
+$multiplenumber = array(
+    '08xxxx', '08xxxxx'
+);
+$send = $wa->sendmessage($multiplenumber, 'test send message by api');
+var_dump(json_decode($send));
+```
+- Response
+```
+class stdClass#29 (2) {
+  public $code =>
+  int(200)
+  public $message =>
+  string(37) "success, all message in waiting list."
+}
+```
+
+## Send Bulk Message to Contact Group
+
+- Request
+```php
+<?php
+
+require "vendor/autoload.php";
+
+use PremiumFastNetwork\WSGateway;
+
+$wa = new WSGateway();
+$wa->token('YOUR-TOKEN-HERE');
+$wa->deviceid('YOUR-DEVICE-ID');
+$send = $wa->sendgroup('xxxxx', 'test send message by api');
+var_dump(json_decode($send));
+```
+
+- Response
+```
+class stdClass#29 (2) {
+  public $code =>
+  int(200)
+  public $message =>
+  string(37) "success, all message in waiting list."
+}
+```
