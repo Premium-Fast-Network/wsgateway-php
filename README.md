@@ -1,4 +1,6 @@
-# Premium Fast Network WSGateway For PHP
+# PFN PHP Library WSGateway
+
+[![StyleCI](https://github.styleci.io/repos/222653815/shield?branch=master)](https://github.styleci.io/repos/222653815)
 
 This library for easy to use in PHP with composer installation. Please referer to our [REST API Documentation](https://docs.premiumfast.net/tutorials/whatsapp-gateway/rest-api) if you want to build in you're own programing langguage.
 
