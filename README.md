@@ -1,1 +1,40 @@
-# wsgateway-php
+# Premium Fast Network WSGateway For PHP
+
+This library for easy to use in PHP with composer installation. Please referer to our [REST API Documentation](https://docs.premiumfast.net/tutorials/whatsapp-gateway/rest-api) if you want to build in you're own programing langguage.
+
+## Installation
+```
+composer require premiumfastnet/wsgateway
+```
+
+# How to Use
+
+## Example
+You can check on folder example for easy to use. keep in mind, you need change `config.php.example` to `config.php` and fill variable on that files to work or you can make you're own combination.
+
+## Send Message Example
+
+- Request
+```php
+<?php
+
+require "vendor/autoload.php";
+
+use PremiumFastNetwork\WSGateway;
+
+$wa = new WSGateway();
+$wa->token('YOUR-TOKEN-HERE');
+$wa->deviceid('YOUR-DEVICE-ID');
+$send = $wa->sendmessage('0812xxxxxxxx', 'test send message by api');
+var_dump(json_decode($send));
+```
+
+- Response
+```
+class stdClass#29 (2) {
+  public $code =>
+  int(200)
+  public $message =>
+  string(44) "success, message will be send in background."
+}
+```

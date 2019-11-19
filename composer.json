@@ -1,0 +1,26 @@
+{
+    "name": "premiumfastnet/wsgateway",
+    "description": "Library Package For WSGateway API",
+    "authors": [
+        {
+            "name": "Premium Fast Network",
+            "email": "cs@premiumfast.net"
+        }
+    ],
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/Premium-Fast-Network/wsgateway-php",
+    "support": {
+        "issues": "https://github.com/Premium-Fast-Network/wsgateway-php/issues",
+        "source": "https://github.com/Premium-Fast-Network/wsgateway-php"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "guzzlehttp/guzzle": "^6.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "PremiumFastNetwork\\": "src/"
+        }
+    }
+}

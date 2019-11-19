@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * Config for API Auth
+ */
+$token = '';
+$deviceid = '';
+
+/**
+ * Number Phone Example :
+ * Indonesia: 0812xxxxxxxx or 62812xxxxxx
+ * International : 65xxxxxx
+ */
+$number = '';
