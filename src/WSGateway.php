@@ -64,23 +64,71 @@ class WSGateway
     }
 
     /**
-     * Send Message
+     * Set Header of Guzzle
+     * 
+     * @param array $form
+     * 
+     * @return array $params
      */
-    public function sendmessage($number, $message)
+    private function setheader($form)
     {
         $params = [
             'headers' => [
                 'Accept'        => 'application/json',
                 'Authorization' => 'Bearer '. $this->token
             ],
-            'form_params' => [
-                'deviceid'  => $this->deviceid,
-                'number'    => $number,
-                'message'   => $message
-            ]
+            'form_params' => $form
         ];
 
-        $request = $this->guzzle->post('message/send', $params);
+        return $params;
+    }
+
+    /**
+     * Send Message in Single Number or Multiple Number
+     * 
+     * Set $number to array for bulk message
+     * Set $number to string for single message
+     * 
+     * @return json $response
+     */
+    public function sendmessage($number, $message)
+    {
+        $params = $this->setheader([
+            'deviceid'  => $this->deviceid,
+            'number'    => $number,
+            'message'   => $message
+        ]);
+        
+        $actionurl = 'message/send';
+
+        /**
+         * If number variable is array
+         * Send message by sendbulk endpoint
+         */
+        if(is_array($number)) {
+            $actionurl = 'message/sendbulk';
+        }
+
+        $request = $this->guzzle->post($actionurl, $params);
+
+        $response = $request->getBody();
+
+        return $response;
+    }
+
+    /**
+     * Send message to contact group
+     * 
+     * @param string $groupid|$message
+     */
+    public function sendgroup($groupid, $message)
+    {
+        $params = $this->setheader([
+            'deviceid'  => $this->deviceid,
+            'message'   => $message
+        ]);
+
+        $request = $this->guzzle->post('message/sendgroup/'. $groupid, $params);
 
         $response = $request->getBody();
 
